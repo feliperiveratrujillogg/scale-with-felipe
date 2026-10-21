@@ -46,9 +46,6 @@
     font-size: 17px;
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    overscroll-behavior-x: none;
-    -webkit-overflow-scrolling: touch;
   }
   body::before {
     content: "";
@@ -198,6 +195,7 @@
   .hero {
     position: relative;
     isolation: isolate;
+    overflow: hidden;
     background: var(--bg);
   }
   .hero-bg { position: absolute; inset: 0; z-index: -2; background: #050910; pointer-events: none; overflow: hidden; }
@@ -382,7 +380,7 @@
   .custom strong { color: var(--ink); font-weight: 600; }
 
   /* ---------- final ---------- */
-  .final { position: relative; border-top: 1px solid var(--line); }
+  .final { position: relative; overflow: hidden; border-top: 1px solid var(--line); }
   .final::before {
     content: ""; position: absolute; inset: auto -10% -40% -10%; height: 70%;
     background: radial-gradient(ellipse at 50% 100%, rgba(74,140,245,0.26), rgba(74,140,245,0) 65%);
