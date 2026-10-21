@@ -35,7 +35,11 @@
   }
 
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
   body {
     margin: 0;
     background: var(--bg);
@@ -44,7 +48,7 @@
     font-size: 17px;
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
-    overflow-x: clip;
+    overscroll-behavior-x: none;
   }
   body::before {
     content: "";
@@ -53,6 +57,7 @@
     height: env(safe-area-inset-top, 0px);
     z-index: 60;
     background: rgba(7, 11, 20, 0.92);
+    pointer-events: none;
   }
   a { color: inherit; }
   img, video { max-width: 100%; }
@@ -510,7 +515,7 @@
       <li><a href="#pricing">Pricing</a></li>
     </ul>
     <div class="nav-cta">
-      <button class="btn btn-primary btn-sm" type="button" data-open>Scale <span class="arrow">&rarr;</span></button>
+      <button class="btn btn-primary btn-sm" type="button" data-open data-tier="General inquiry">Scale <span class="arrow">&rarr;</span></button>
     </div>
   </div>
 </header>
@@ -532,7 +537,7 @@
         <h1>Scale your service business. <span class="em">More calls, more booked jobs.</span></h1>
         <p class="lead">I started detailing cars with my brother and $700. Today it's a crew of six, two trucks, two trailers, and accounts like Chipotle and Chick-fil-A. Now I take service businesses like yours and rebuild how they get customers: the ads, the website, and the follow-up.</p>
         <div class="hero-ctas">
-          <button class="btn btn-primary btn-lg" type="button" data-open>Scale <span class="arrow">&rarr;</span></button>
+          <button class="btn btn-primary btn-lg" type="button" data-open data-tier="General inquiry">Scale <span class="arrow">&rarr;</span></button>
           <a class="btn btn-ghost btn-lg" href="#included">See how it works</a>
         </div>
       </div>
@@ -688,7 +693,7 @@
       <span class="eyebrow r">Two minutes</span>
       <h2 class="r">Tell me where your business is. I'll tell you what I'd do next.</h2>
       <p class="r">No pitch call, no sales team. You fill out the form, I read it, and I get back to you myself.</p>
-      <div class="r"><button class="btn btn-primary btn-lg" type="button" data-open>Scale <span class="arrow">&rarr;</span></button></div>
+      <div class="r"><button class="btn btn-primary btn-lg" type="button" data-open data-tier="General inquiry">Scale <span class="arrow">&rarr;</span></button></div>
     </div>
   </section>
 </main>
@@ -794,6 +799,7 @@
   var done = document.getElementById('done');
   var tierInput = document.getElementById('f-tier');
   var lastFocus = null;
+  var savedScrollY = 0;
 
   function openSheet(tier) {
     lastFocus = document.activeElement;
@@ -801,12 +807,18 @@
     form.hidden = false; done.hidden = true;
     sheet.hidden = false; scrim.hidden = false;
     requestAnimationFrame(function () { sheet.classList.add('open'); scrim.classList.add('open'); });
-    document.body.style.overflow = 'hidden';
+    savedScrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + savedScrollY + 'px';
+    document.body.style.width = '100%';
     setTimeout(function () { var f = document.getElementById('f-name'); if (f) f.focus(); }, 180);
   }
   function closeSheet() {
     sheet.classList.remove('open'); scrim.classList.remove('open');
-    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, savedScrollY);
     setTimeout(function () { sheet.hidden = true; scrim.hidden = true; }, 240);
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
