@@ -482,6 +482,9 @@
   .err { font-size: 13px; color: #f29a9a; display: none; }
   .field.invalid .err { display: block; }
   .form-foot { display: grid; gap: 12px; margin-top: 4px; }
+  label.consent { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; font-family: var(--body); font-size: 13.5px; letter-spacing: 0; text-transform: none; color: var(--ink-3); line-height: 1.5; cursor: pointer; }
+  label.consent input { width: 18px; height: 18px; margin: 2px 0 0; padding: 0; accent-color: var(--blue); }
+  label.consent a { color: var(--blue-soft); }
   .fine { font-size: 13px; color: var(--ink-3); }
   .done { display: grid; gap: 14px; padding: 8px 0; }
   .done h3 { font-family: var(--display); font-size: 30px; font-weight: 600; }
@@ -724,8 +727,8 @@
 
 <footer>
   <div class="wrap">
-    <span>&copy; <span id="year">2026</span> SAAS Mastery &middot; Savannah, GA</span>
-    <span><a href="#story">Story</a> &nbsp;&middot;&nbsp; <a href="#included">What it is</a> &nbsp;&middot;&nbsp; <a href="#pricing">Pricing</a></span>
+    <span>&copy; <span id="year">2026</span> SAAS Mastery by Scale With Felipe &middot; operated by Siestr LLC &middot; Savannah, GA<br><a href="mailto:shopswfelipe@gmail.com">shopswfelipe@gmail.com</a> &middot; <a href="tel:+19122282253">(912) 228-2253</a></span>
+    <span><a href="#story">Story</a> &nbsp;&middot;&nbsp; <a href="#included">What it is</a> &nbsp;&middot;&nbsp; <a href="#pricing">Pricing</a> &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="/terms.html">Terms</a></span>
   </div>
 </footer>
 
@@ -801,6 +804,10 @@
         <input id="f-src" name="source" type="text" placeholder="TikTok, a friend, Google...">
       </div>
       <input type="hidden" id="f-tier" name="interested_in" value="">
+      <label class="consent" for="f-sms">
+        <input id="f-sms" name="sms_consent" type="checkbox" value="yes">
+        <span>Text me about my request. By checking this box, you agree to receive text messages from Scale With Felipe (Siestr LLC) about your inquiry and our services at the number above. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. Consent is not a condition of purchase. See our <a href="/privacy.html" target="_blank">Privacy Policy</a> and <a href="/terms.html" target="_blank">Terms</a>.</span>
+      </label>
       <div class="form-foot">
         <button class="btn btn-primary btn-lg" type="submit" id="submit">Send it <span class="arrow">&rarr;</span></button>
         <p class="fine">Nothing gets charged here. This just tells me what you're working with so I can come back with a real plan.</p>
