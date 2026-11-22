@@ -37,7 +37,7 @@
 <h1>Text Updates</h1>
 <p class="meta">Scale With Felipe &middot; operated by Siestr LLC &middot; Savannah, GA</p>
 
-<p>Want Felipe to text you about growing your service business? Leave your name and number below. Checking the text message box is optional.</p>
+<p>Want Felipe to text you about growing your service business? Leave your name and number below. Both text message boxes are optional and unchecked; you can submit without checking either.</p>
 
 <form id="optin" action="https://formspree.io/f/mqpebgwj" method="POST">
   <input type="hidden" name="source" value="SMS opt-in page">
@@ -45,10 +45,17 @@
   <input id="name" name="name" type="text" autocomplete="name" required>
   <label class="f" for="phone">Mobile phone number</label>
   <input id="phone" name="phone" type="tel" autocomplete="tel" required>
-  <label class="consent" for="sms">
-    <input id="sms" name="sms_consent" type="checkbox" value="yes">
-    <span>(Optional) Yes, text me. By checking this box, I agree to receive text messages from Scale With Felipe (Siestr LLC) at the number above, including follow-ups about my request, call scheduling and reminders, and occasional messages about Scale With Felipe's marketing services. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out at any time, HELP for help. Consent is not a condition of purchase. See our <a href="/privacy.html">Privacy Policy</a> and <a href="/terms.html">Terms &amp; Conditions</a>.</span>
+  <label class="f" for="email">Email (optional)</label>
+  <input id="email" name="email" type="text" autocomplete="email">
+  <label class="consent" for="sms_tx">
+    <input id="sms_tx" name="sms_consent_transactional" type="checkbox" value="yes">
+    <span>(Optional) I consent to receive non-marketing text messages from Scale With Felipe (Siestr LLC) at the phone number provided, such as follow-ups about my request, call scheduling and appointment reminders. Message frequency may vary. Message &amp; data rates may apply. Reply HELP for help or STOP to opt out.</span>
   </label>
+  <label class="consent" for="sms_mk">
+    <input id="sms_mk" name="sms_consent_marketing" type="checkbox" value="yes">
+    <span>(Optional) I consent to receive marketing and promotional text messages from Scale With Felipe (Siestr LLC) at the phone number provided, such as offers and info about Scale With Felipe's marketing services. Message frequency may vary. Message &amp; data rates may apply. Reply HELP for help or STOP to opt out.</span>
+  </label>
+  <p style="font-size:14px">Consent is not a condition of purchase. <a href="/privacy.html">Privacy Policy</a> | <a href="/terms.html">Terms of Service</a>. We never share your mobile number or SMS opt-in data with third parties.</p>
   <button type="submit">Submit</button>
   <p class="ok" id="ok">Got it. Felipe will reach out soon.</p>
 </form>
