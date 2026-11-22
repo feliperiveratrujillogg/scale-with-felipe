@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Text Updates Sign Up | Scale With Felipe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+  :root { --bg:#070b14; --ink:#e9eff8; --ink-2:rgba(233,239,248,.72); --ink-3:rgba(233,239,248,.46); --line:rgba(150,185,235,.16); --blue:#4a8cf5; color-scheme:dark; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:"Barlow","Helvetica Neue",Arial,sans-serif; font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:760px; margin-inline:auto; padding:56px max(16px,env(safe-area-inset-left,0px)) 72px; }
+  a { color:#9fc6ff; }
+  .back { font-family:"IBM Plex Mono",Menlo,monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); text-decoration:none; }
+  h1 { font-family:"Barlow Condensed","Arial Narrow",sans-serif; font-weight:600; font-size:clamp(40px,7vw,60px); line-height:1; margin:28px 0 8px; text-transform:uppercase; }
+  h2 { font-family:"Barlow Condensed","Arial Narrow",sans-serif; font-weight:600; font-size:26px; margin:40px 0 8px; text-transform:uppercase; letter-spacing:.02em; }
+  p, li { color:var(--ink-2); }
+  .meta { font-family:"IBM Plex Mono",Menlo,monospace; font-size:12px; color:var(--ink-3); }
+  .box { border:1px solid var(--line); border-radius:8px; padding:18px 20px; margin:24px 0; }
+  footer { border-top:1px solid var(--line); margin-top:56px; padding-top:20px; font-family:"IBM Plex Mono",Menlo,monospace; font-size:12px; color:var(--ink-3); }
+
+  form { border:1px solid var(--line); border-radius:8px; padding:22px; margin:24px 0; }
+  label.f { display:block; font-weight:600; margin:14px 0 6px; color:var(--ink); }
+  input[type=text], input[type=tel] { width:100%; padding:12px 14px; border-radius:6px; border:1px solid var(--line); background:#0d1422; color:var(--ink); font:inherit; }
+  .consent { display:flex; gap:12px; align-items:flex-start; margin:20px 0; font-size:15px; }
+  .consent input { margin-top:5px; width:18px; height:18px; flex:none; }
+  button { background:var(--blue); color:#fff; border:0; border-radius:6px; padding:13px 22px; font:600 16px "Barlow",sans-serif; cursor:pointer; }
+  img { max-width:100%; border-radius:8px; border:1px solid var(--line); }
+  .ok { display:none; color:#8ee3a8; margin-top:14px; }
+</style>
+</head>
+<body>
+<main class="wrap">
+<a class="back" href="/">&larr; Scale With Felipe</a>
+<h1>Text Updates</h1>
+<p class="meta">Scale With Felipe &middot; operated by Siestr LLC &middot; Savannah, GA</p>
+
+<p>Want Felipe to text you about growing your service business? Leave your name and number below. Checking the text message box is optional.</p>
+
+<form id="optin" action="https://formspree.io/f/mqpebgwj" method="POST">
+  <input type="hidden" name="source" value="SMS opt-in page">
+  <label class="f" for="name">Full name</label>
+  <input id="name" name="name" type="text" autocomplete="name" required>
+  <label class="f" for="phone">Mobile phone number</label>
+  <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+  <label class="consent" for="sms">
+    <input id="sms" name="sms_consent" type="checkbox" value="yes">
+    <span>(Optional) Yes, text me. By checking this box, I agree to receive text messages from Scale With Felipe (Siestr LLC) at the number above, including follow-ups about my request, call scheduling and reminders, and occasional messages about Scale With Felipe's marketing services. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out at any time, HELP for help. Consent is not a condition of purchase. See our <a href="/privacy.html">Privacy Policy</a> and <a href="/terms.html">Terms &amp; Conditions</a>.</span>
+  </label>
+  <button type="submit">Submit</button>
+  <p class="ok" id="ok">Got it. Felipe will reach out soon.</p>
+</form>
+
+<h2>Facebook &amp; Instagram lead forms</h2>
+<p>Most people reach us through our Facebook and Instagram lead form ads. Those forms show this text message consent disclosure before the Submit button:</p>
+<div class="box"><p>"By tapping Submit, you agree to receive text messages from Scale With Felipe (Siestr LLC) at the number you provided about your request and our services. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. Consent is not a condition of purchase."</p></div>
+<p>Screenshot of the lead form (English and Spanish versions):</p>
+<p><img src="/sms-consent.png" alt="Scale With Felipe Facebook lead form showing the text message consent disclosure"></p>
+
+<footer>
+  Scale With Felipe is operated by Siestr LLC &middot; Savannah, GA<br>
+  <a href="mailto:shopswfelipe@gmail.com">shopswfelipe@gmail.com</a> &middot; <a href="tel:+19122282253">(912) 228-2253</a><br>
+  <a href="/privacy.html">Privacy Policy</a> &middot; <a href="/terms.html">Terms &amp; Conditions</a>
+</footer>
+</main>
+<script>
+document.getElementById('optin').addEventListener('submit',function(e){
+  e.preventDefault();var f=e.target;
+  fetch(f.action,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)}).then(function(){f.querySelectorAll('input,button').forEach(function(i){i.disabled=true});document.getElementById('ok').style.display='block';});
+});
+</script>
+</body>
+</html>
